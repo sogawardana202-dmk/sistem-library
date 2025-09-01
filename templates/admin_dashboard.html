@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard Admin{% endblock %}
+{% block content %}
+<h2 class="mb-4">Dashboard Admin</h2>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card text-center bg-info text-white mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Total Buku</h5>
+        <p class="card-text fs-3">{{ buku_count }}</p>
+        <a href="{{ url_for('admin_books') }}" class="btn btn-light btn-sm">Lihat Buku</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-center bg-success text-white mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Total Peminjaman</h5>
+        <p class="card-text fs-3">{{ peminjaman_count }}</p>
+        <a href="{{ url_for('admin_borrowings') }}" class="btn btn-light btn-sm">Lihat Peminjaman</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-center bg-warning text-white mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Total Surat</h5>
+        <p class="card-text fs-3">{{ surat_count }}</p>
+        <a href="{{ url_for('admin_letters') }}" class="btn btn-light btn-sm">Lihat Surat</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

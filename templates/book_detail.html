@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Detail Buku{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-4">
+    {% if buku.foto %}
+    <img src="{{ url_for('uploaded_file', filename=buku.foto) }}" class="img-fluid">
+    {% else %}
+    <img src="{{ url_for('static', filename='images/default.png') }}" class="img-fluid">
+    {% endif %}
+  </div>
+  <div class="col-md-8">
+    <h2>{{ buku.judul }}</h2>
+    <p>Penulis: {{ buku.penulis }}</p>
+    <p>Tahun: {{ buku.tahun }}</p>
+    <a href="{{ url_for('borrow', buku_id=buku.id) }}" class="btn btn-success">Pinjam Buku</a>
+  </div>
+</div>
+{% endblock %}
+

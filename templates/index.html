@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Beranda{% endblock %}
+{% block content %}
+<h1 class="text-primary text-center mb-4">Selamat Datang di Perpustakaan Sekolah</h1>
+<form method="get" class="mb-4">
+  <input type="text" name="search" class="form-control" placeholder="Cari buku..." value="{{ request.args.get('search') }}">
+</form>
+<div class="row">
+  {% for buku in buku_list %}
+  <div class="col-md-3 mb-4">
+    <div class="card h-100">
+      {% if buku.foto %}
+      <img src="{{ url_for('uploaded_file', filename=buku.foto) }}" class="card-img-top" alt="{{ buku.judul }}">
+      {% else %}
+      <img src="{{ url_for('static', filename='images/default.png') }}" class="card-img-top" alt="No Image">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ buku.judul }}</h5>
+        <p class="card-text">Penulis: {{ buku.penulis }}</p>
+        <a href="{{ url_for('book_detail', buku_id=buku.id) }}" class="btn btn-primary">Detail</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+

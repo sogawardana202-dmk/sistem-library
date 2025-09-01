@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Kelola Buku{% endblock %}
+{% block content %}
+<h2>Kelola Buku</h2>
+<!-- Form Tambah Buku -->
+<form method="post" enctype="multipart/form-data" class="mb-4">
+  <div class="row g-2">
+    <div class="col-md-3">
+      <input type="text" name="judul" class="form-control" placeholder="Judul Buku" required>
+    </div>
+    <div class="col-md-3">
+      <input type="text" name="penulis" class="form-control" placeholder="Penulis" required>
+    </div>
+    <div class="col-md-2">
+      <input type="text" name="tahun" class="form-control" placeholder="Tahun">
+    </div>
+    <div class="col-md-3">
+      <input type="file" name="foto" class="form-control">
+    </div>
+    <div class="col-md-1">
+      <button type="submit" class="btn btn-success w-100">Tambah</button>
+    </div>
+  </div>
+</form>
+
+<!-- Tabel Buku -->
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Foto</th>
+      <th>Judul</th>
+      <th>Penulis</th>
+      <th>Tahun</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for buku in buku_list %}
+    <tr>
+      <td>
+        {% if buku.foto %}
+        <img src="{{ url_for('uploaded_file', filename=buku.foto) }}" width="50">
+        {% else %}
+        -
+        {% endif %}
+      </td>
+      <td>{{ buku.judul }}</td>
+      <td>{{ buku.penulis }}</td>
+      <td>{{ buku.tahun }}</td>
+      <td>
+  <a href="{{ url_for('admin_edit_book', buku_id=buku.id) }}" class="btn btn-sm btn-warning">Edit</a>
+  <a href="{{ url_for('admin_delete_book', buku_id=buku.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+      </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+

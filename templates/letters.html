@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Surat{% endblock %}
+{% block content %}
+<h2>Daftar Surat</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Judul</th>
+      <th>Pengirim</th>
+      <th>Penerima</th>
+      <th>File</th>
+      <th>Tanggal</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for surat in surat_list %}
+    <tr>
+      <td>{{ surat.judul }}</td>
+      <td>{{ surat.pengirim }}</td>
+      <td>{{ surat.penerima }}</td>
+      <td><a href="{{ url_for('uploaded_file', filename=surat.file) }}" target="_blank">Lihat File</a></td>
+      <td>{{ surat.created_at.strftime('%Y-%m-%d') }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Edit Buku{% endblock %}
+{% block content %}
+<h3>Edit Buku</h3>
+<form method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label>Judul</label>
+    <input type="text" name="judul" class="form-control" value="{{ buku.judul }}" required>
+  </div>
+  <div class="mb-3">
+    <label>Penulis</label>
+    <input type="text" name="penulis" class="form-control" value="{{ buku.penulis }}">
+  </div>
+  <div class="mb-3">
+    <label>Tahun</label>
+    <input type="text" name="tahun" class="form-control" value="{{ buku.tahun }}">
+  </div>
+  <div class="mb-3">
+    <label>Foto</label>
+    <input type="file" name="foto" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock %}
+

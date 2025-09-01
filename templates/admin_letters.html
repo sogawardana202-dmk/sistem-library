@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Surat{% endblock %}
+{% block content %}
+<h2>Kelola Surat</h2>
+<!-- Form Upload Surat -->
+<form method="post" enctype="multipart/form-data" class="mb-4 row g-2">
+  <div class="col-md-3">
+    <input type="text" name="judul" class="form-control" placeholder="Judul Surat" required>
+  </div>
+  <div class="col-md-3">
+    <input type="text" name="pengirim" class="form-control" placeholder="Pengirim" required>
+  </div>
+  <div class="col-md-3">
+    <input type="text" name="penerima" class="form-control" placeholder="Penerima" required>
+  </div>
+  <div class="col-md-2">
+    <input type="file" name="file" class="form-control" required>
+  </div>
+  <div class="col-md-1">
+    <button type="submit" class="btn btn-success w-100">Upload</button>
+  </div>
+</form>
+
+<!-- Tabel Surat -->
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Judul</th>
+      <th>Pengirim</th>
+      <th>Penerima</th>
+      <th>File</th>
+      <th>Tanggal</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in surat_list %}
+    <tr>
+      <td>{{ s.judul }}</td>
+      <td>{{ s.pengirim }}</td>
+      <td>{{ s.penerima }}</td>
+      <td><a href="{{ url_for('uploaded_file', filename=s.file) }}" target="_blank">Lihat</a></td>
+      <td>{{ s.created_at.strftime('%Y-%m-%d') }}</td>
+      <td>
+  <a href="{{ url_for('admin_edit_letter', letter_id=s.id) }}" class="btn btn-sm btn-warning">Edit</a>
+  <a href="{{ url_for('admin_delete_letter', letter_id=s.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+     </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+

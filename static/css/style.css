@@ -1,0 +1,127 @@
+/* ===== Body & Background ===== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f8ff;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ===== Background Animasi Buku ===== */
+.animated-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('/static/images/book.png') repeat;
+    animation: moveBooks 60s linear infinite;
+    opacity: 0.08;
+    z-index: -1;
+}
+
+@keyframes moveBooks {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 800px; }
+}
+
+/* ===== Navbar ===== */
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.4rem;
+}
+.navbar-nav .nav-link {
+    margin-right: 0.8rem;
+    transition: color 0.3s;
+}
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+}
+
+/* ===== Cards Buku ===== */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* ===== Alerts ===== */
+.alert {
+    transition: opacity 1s ease-in-out;
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: #1c1c1c;
+    color: #eee;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+/* ===== Hero Section ===== */
+.hero-section {
+    text-align: center;
+    padding: 8rem 1rem 4rem 1rem;
+    color: #002147;
+}
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+.hero-section p {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Layout dasar body & footer */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    flex: 1; /* Membuat konten utama mengisi ruang di antara navbar dan footer */
+}
+
+/* Dark mode styling */
+.dark-mode {
+    background-color: #121212;
+    color: #eaeaea;
+}
+.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #eaeaea;
+}
+.dark-mode footer {
+    background-color: #1e1e1e;
+    color: #ccc;
+}
+
+/* Smooth transition */
+body, .card, footer {
+    transition: background-color 0.4s, color 0.4s;
+}
+
+
+/* Footer */
+footer {
+    background-color: #1c1c1c;
+    color: #eee;
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+

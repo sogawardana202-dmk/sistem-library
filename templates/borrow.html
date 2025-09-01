@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Peminjaman Buku{% endblock %}
+{% block content %}
+<h3>Pinjam Buku: {{ buku.judul }}</h3>
+<form method="post">
+  <div class="mb-3">
+    <label>Nama Peminjam</label>
+    <input type="text" name="user_name" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Tanggal Pinjam</label>
+    <input type="date" name="tanggal_pinjam" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Jam Pinjam</label>
+    <input type="time" name="jam_pinjam" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Tanggal Kembali</label>
+    <input type="date" name="tanggal_kembali" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Pinjam</button>
+</form>
+{% endblock %}
+

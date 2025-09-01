@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Peminjaman Buku{% endblock %}
+{% block content %}
+<h2>Peminjaman Buku</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nama Peminjam</th>
+      <th>Buku</th>
+      <th>Tanggal Pinjam</th>
+      <th>Jam Pinjam</th>
+      <th>Tanggal Kembali</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in borrowings %}
+    <tr>
+      <td>{{ p.user_name }}</td>
+      <td>{{ p.buku.judul }}</td>
+      <td>{{ p.tanggal_pinjam.strftime('%Y-%m-%d') }}</td>
+      <td>{{ p.jam_pinjam.strftime('%H:%M') }}</td>
+      <td>{{ p.tanggal_kembali.strftime('%Y-%m-%d') }}</td>
+      <td>
+  <a href="{{ url_for('admin_delete_borrowing', borrow_id=p.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+     </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
